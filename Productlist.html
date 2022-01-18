@@ -56,7 +56,8 @@
                       {{product.price }}
                     </td>
                     <td width="150">
-                      <span class="text-success"  v-if="product.is_enabled == 16" >啟用</span>
+                      <!-- <span class="text-success"  v-if="product.is_enabled == 16" >啟用</span> -->
+                      <span class="text-success"  v-if="product.is_enabled" >啟用</span>
                       <span v-else >未啟用</span>
                     </td>
                     <td width="120">
@@ -86,7 +87,8 @@
                     </div>
                   </div>
                 </div>
-                <template v-for="object in productObject.imagesUrl " :key="object.id">
+                <!-- //objuct的imagesUrl 裡面只有index  -->
+                <template v-for="object in productObject.imagesUrl " :key="object.index">
                   <img :src="object" alt="" class="images m-2">
                 </template>
               </template>
