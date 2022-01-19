@@ -55,10 +55,12 @@ const app = createApp({
             item.is_enabled = 1
             } 
         },
+        //delete 寫在v-on-delete得
         delItem(item){
             axios.delete((`${this.url}/api/${this.path}/admin/product/${item.id}`))
             .then((res) => { 
                 console.log(res);
+                window.location = "Product-0114.html"
             }).catch((err) => {
                 alert('What!!')
             })
