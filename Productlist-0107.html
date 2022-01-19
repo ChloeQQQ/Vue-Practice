@@ -55,9 +55,10 @@
                     <td width="120">
                       {{product.price }}
                     </td>
-                    <td width="150">
+                    <td width="150" v-on:click="Show(product)">
                       <!-- <span class="text-success"  v-if="product.is_enabled == 16" >啟用</span> -->
-                      <span class="text-success"  v-if="product.is_enabled" >啟用</span>
+                      <!-- <span class="text-success"  v-if="product.is_enabled">啟用</span> -->
+                      <span class="text-success"  v-if="product.is_enabled == 16 ">啟用</span>
                       <span v-else >未啟用</span>
                     </td>
                     <td width="120">
@@ -105,6 +106,7 @@
         data() {
             return {
                 productObject:'',
+                isClose:true,
                 products: [ 
                         {
                         category: "甜甜圈",
@@ -157,13 +159,20 @@
                         ]
                         }
                     ],
-
                     isOpen:false,
                 }
             },
             methods: {
                 ProductDetail(index){
                     this.productObject = this.products[index];
+                },
+                Show(product){
+                  console.log(product)
+                  if(product.is_enabled == 16){
+                      product.is_enabled = 1
+                  }else {
+                    product.is_enabled = 16
+                  }
                 }
             },
 
