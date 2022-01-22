@@ -26,7 +26,7 @@ const app = createApp({
             window.location = 'Product-0114.html';
 
             }).catch((error) => {
-                alert(error);
+                alert("登入失敗囉");
             })
         }
     },

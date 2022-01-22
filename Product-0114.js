@@ -10,7 +10,11 @@ const app = createApp({
                 password:'',
                 
             },
-            contents:[],
+            //需要以物件方式去到資料 因為資料是物件 所以取出資料時也需要用物件的型態去取值
+            contents:{
+                products:[]
+            },
+            detailItem:'',
         }
     },
     created() {
@@ -50,7 +54,7 @@ const app = createApp({
         },
         isClose(item){
             if(item.is_enabled == 1){
-            item.is_enabled = 2
+            item.is_enabled = 0
             }else{
             item.is_enabled = 1
             } 
