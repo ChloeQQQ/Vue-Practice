@@ -4,7 +4,7 @@ const app = createApp({
     data() {
         return {
             url:'https://vue3-course-api.hexschool.io/v2',
-            path:'chloevuestyle',
+            path:'chloeuvestyle',
             user:{
                 username :'',
                 password:'',
