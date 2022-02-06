@@ -157,7 +157,7 @@
                         type="button"
                         v-if="!currentItem.imagesUrl.length ||currentItem.imagesUrl[currentItem.imagesUrl.length  -1]"
                         class="btn btn-outline-primary btn-sm d-block w-100"
-                        v-on:click="currentItem.imagesUrl.push('')"
+                        @click="currentItem.imagesUrl.push('')"
                       >
                         新增圖片
                       </button>
@@ -167,7 +167,7 @@
                         type="button"
                         v-else
                         class="btn btn-outline-danger btn-sm d-block w-100"
-                        v-on:click="currentItem.imagesUrl.pop()"
+                        @click="currentItem.imagesUrl.pop()"
                       >
                         刪除最後一個圖片
                       </button>
