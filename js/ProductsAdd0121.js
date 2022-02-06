@@ -43,7 +43,7 @@ const app = createApp({
             //如果沒有登入成功 跳回登入畫面
             }).catch((err) => {
                 //失敗
-                alert('go home')
+                alert(err.data.message)
                 window.location = "API-0114.html";
             })
         },
@@ -54,7 +54,7 @@ const app = createApp({
                 // console.log(res.data);
                 this.contents = res.data;
             }).catch((err) => {
-                alert('What!!')
+                alert(err.data.message)
             })
         },
         DeleteItem(item){
@@ -75,7 +75,7 @@ const app = createApp({
             this.getProducts();
             delProduct.hide();
         }).catch((err) => {
-            alert('抱歉無法再次delete')
+            alert(err.data.message)
         })
         },
         
@@ -105,7 +105,7 @@ const app = createApp({
                 this.getProducts();
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
-                alert('抱歉無法修改')
+                alert(err.data.message)
                 console.log(err);
             })
             }else{
@@ -116,7 +116,7 @@ const app = createApp({
                 this.getProducts();
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
-                alert('抱歉無法新增')
+                alert(err.data.message)
                 console.log(err);
             })
             }

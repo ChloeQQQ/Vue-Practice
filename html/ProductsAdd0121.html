@@ -20,7 +20,7 @@
       <div class="container">
         <!-- 前面的頁面 -->
         <div class="text-end mt-4">
-          <button class="btn btn-primary" v-on:click="addItem">
+          <button class="btn btn-primary" @click="addItem">
             建立新的產品
           </button>
         </div>
@@ -48,7 +48,7 @@
           <tbody>
             <tr v-for="item in contents.products" :key="item.id">
               <td>{{item.category}}</td>
-              <td>{{item.content}}</td>
+              <td>{{item.title}}</td>
               <td class="text-mid">{{item.origin_price}}</td>
               <td class="text-mid">{{item.price}}</td>
               <td>
@@ -63,14 +63,14 @@
                   <button
                     type="button"
                     class="btn btn-outline-primary btn-sm"
-                    v-on:click="editItem(item)"
+                    @click="editItem(item)"
                   >
                     編輯
                   </button>
                   <button
                     type="button"
                     class="btn btn-outline-danger btn-sm"
-                    v-on:click="DeleteItem(item)"
+                    @click="DeleteItem(item)"
                   >
                     刪除
                   </button>
@@ -95,7 +95,7 @@
           <div class="modal-content border-0">
             <div class="modal-header bg-dark text-white">
               <h5 id="productModalLabel" class="modal-title">
-                <span v-if="status == true">新增產品</span>
+                <span v-if="status">新增產品</span>
                 <span v-else>編輯產品</span>
               </h5>
               <button
@@ -276,7 +276,7 @@
               <button
                 type="button"
                 class="btn btn-suscces"
-                v-on:click="confirmItem"
+                @click="confirmItem"
               >
                 確認
               </button>
@@ -307,7 +307,7 @@
             </div>
             <div class="modal-body">
               是否刪除
-              <strong class="text-danger"></strong>
+              <strong class="text-danger">{{currentItem.title}}</strong>
               商品(刪除後將無法恢復)。
             </div>
             <div class="modal-footer">
@@ -321,7 +321,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                v-on:click="confirmDelete"
+                @click="confirmDelete"
               >
                 確認刪除
               </button>
@@ -348,6 +348,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="./ProductsAdd0121.js"></script>
+    <script type="module" src="/js/ProductsAdd0121.js"></script>
   </body>
 </html>
