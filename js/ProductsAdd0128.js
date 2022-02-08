@@ -1,9 +1,15 @@
 import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.esm-browser.js';
+import pagination from './pagination.js';
+import addnew from './addnew.js';
 
 let productModalTwo = '';
 let delProduct = '';
 
 const app = createApp({
+    components:{
+        pagination,
+        addnew,
+    },
     data() {
         return {
             url:'https://vue3-course-api.hexschool.io/v2',
@@ -19,7 +25,8 @@ const app = createApp({
 
             currentItem:{
                 imagesUrl:[],
-            }
+            },
+            pagination:{},
         }
     },
     created() {
@@ -44,15 +51,16 @@ const app = createApp({
             }).catch((err) => {
                 //失敗
                 alert(err.data.message)
-                window.location = "./API-0114.html";
+                window.location = "API-0114.html";
             })
         },
-        getProducts(){
+        getProducts(page = 1){
             //取產品列表-使用get //帶入變數path
-            axios.get(`${this.url}/api/${this.path}/admin/products`)
+            axios.get(`${this.url}/api/${this.path}/admin/products/?page=${page}`)
             .then((res) => { 
                 // console.log(res.data);
                 this.contents = res.data;
+                this.pagination = res.data.pagination;
             }).catch((err) => {
                 alert(err.data.message)
             })
@@ -78,7 +86,7 @@ const app = createApp({
             alert(err.data.message)
         })
         },
-        
+
         addItem(){
             this.status = true;
             productModalTwo.show();//按了之後show出來
@@ -95,32 +103,7 @@ const app = createApp({
             // console.log(item);
         },
 
-        confirmItem()
-        {
-            if(this.status == false ){
-            axios.put(`${this.url}/api/${this.path}/admin/product/${this.currentItem.id}`,{data:this.currentItem})
-                //後面要把修改的那包item寫在put- api最後面
-            .then((res) =>{
-                console.log(res);
-                this.getProducts();
-                productModalTwo.hide(); //按了之後hide出來
-            }).catch((err) => {
-                alert(err.data.message)
-                console.log(err);
-            })
-            }else{
-            axios.post(`${this.url}/api/${this.path}/admin/product`,{data:this.currentItem})
-                //後面要把修改的那包item寫在put- api最後面
-            .then((res) =>{
-                console.log(res);
-                this.getProducts();
-                productModalTwo.hide(); //按了之後hide出來
-            }).catch((err) => {
-                alert(err.data.message)
-                console.log(err);
-            })
-            }
-        },
+       
 
 
     },
@@ -131,6 +114,7 @@ const app = createApp({
 
       
     },  
-
 });
+
+
 app.mount('#app');

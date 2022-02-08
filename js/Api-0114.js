@@ -14,7 +14,6 @@ const app = createApp({
     },
     methods: {
         login(){
-            
             // 登入帳號
             axios.post(`${this.url}/admin/signin`, this.user)
             .then((res) =>{
@@ -23,7 +22,7 @@ const app = createApp({
             console.log(res.data);
             //使用反引號（使用變數） 存到cookie //把token = chloeToken expired 轉型
             document.cookie = `chloeToken=${token};expires=${new Date(expired)}; path=/`;
-            window.location = 'Product-0114.html';
+            window.location = './Product-0114.html';
 
             }).catch((error) => {
                 alert("登入失敗囉");
