@@ -95,7 +95,7 @@
           <div class="modal-content border-0">
             <div class="modal-header bg-dark text-white">
               <h5 id="productModalLabel" class="modal-title">
-                <span v-if="status">新增產品</span>
+                <span v-if="status == true">新增產品</span>
                 <span v-else>編輯產品</span>
               </h5>
               <button
@@ -155,7 +155,7 @@
                     <div>
                       <button
                         type="button"
-                        v-if="!currentItem.imagesUrl.length ||currentItem.imagesUrl[currentItem.imagesUrl.length  -1]"
+                        v-if="!currentItem.imagesUrl?.length || currentItem.imagesUrl[currentItem.imagesUrl?.length-1]"
                         class="btn btn-outline-primary btn-sm d-block w-100"
                         @click="currentItem.imagesUrl.push('')"
                       >

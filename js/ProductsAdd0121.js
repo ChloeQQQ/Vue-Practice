@@ -15,7 +15,7 @@ const app = createApp({
             contents:{
                 products:[]
             },
-            status: true,
+            status:true,
 
             currentItem:{
                 imagesUrl:[],
@@ -44,7 +44,7 @@ const app = createApp({
             }).catch((err) => {
                 //失敗
                 alert(err.data.message)
-                window.location = "./API-0114.html";
+                window.location = "./API-0121.html";
             })
         },
         getProducts(){
