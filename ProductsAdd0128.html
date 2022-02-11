@@ -98,7 +98,11 @@
         aria-labelledby="productModalLabel"
         aria-hidden="true"
       >
-        <product-modal :current-item="currentItem"></product-modal>
+        <product-modal
+          :current-item="currentItem"
+          :status="status"
+          @emitin="getProducts"
+        ></product-modal>
       </div>
 
       <div

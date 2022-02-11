@@ -102,7 +102,6 @@ const app = createApp({
             // console.log(item);
         },
         
-
     },
     mounted() {
         productModalTwo = new bootstrap.Modal(document.querySelector('#productModal'))
@@ -113,7 +112,13 @@ const app = createApp({
     },  
 });
 app.component('productModal', {
-    props:["currentItem"],
+    data(){
+        return {
+        url:'https://vue3-course-api.hexschool.io/v2',
+        path:'chloeuvestyle',
+        }
+    },
+    props:["currentItem","status"],
     template:'#templateFor',
     methods: {
         confirmItem()
@@ -123,7 +128,7 @@ app.component('productModal', {
                 //後面要把修改的那包item寫在put- api最後面
             .then((res) =>{
                 console.log(res);
-                this.getProducts();
+                this.$emit('emitIn');
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
                 alert(err.data.message)
@@ -134,7 +139,7 @@ app.component('productModal', {
                 //後面要把修改的那包item寫在put- api最後面
             .then((res) =>{
                 console.log(res);
-                // this.getProducts();
+                this.$emit('emitIn');
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
                 alert(err.data.message)
