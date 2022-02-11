@@ -118,7 +118,7 @@ app.component('productModal', {
         path:'chloeuvestyle',
         }
     },
-    props:["currentItem","status"],
+    props:["currentItem","status"], //因為需要外層的資料 所以props把外層的資料傳內層
     template:'#templateFor',
     methods: {
         confirmItem()
@@ -139,7 +139,7 @@ app.component('productModal', {
                 //後面要把修改的那包item寫在put- api最後面
             .then((res) =>{
                 console.log(res);
-                this.$emit('emitIn');
+                this.$emit('emitIn'); //原本是this.Getproducts 所以更新完後需要把這個內層資料再傳到外層去 用@emit 
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
                 alert(err.data.message)
