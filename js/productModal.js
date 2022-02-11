@@ -1,5 +1,12 @@
 export default{
     props:["current-item","status"],
+    data(){
+      return {
+        url:'https://vue3-course-api.hexschool.io/v2',
+        path:'chloeuvestyle',
+      }
+
+    },
    
     methods: {
         confirmItem()
@@ -10,9 +17,10 @@ export default{
             .then((res) =>{
                 console.log(res);
                 this.$emit('emitIn');
-                productModalTwo.hide(); //按了之後hide出來
+                this.$emit('emitClose');
+                //按了之後hide出來
             }).catch((err) => {
-                alert(err.data.message)
+                alert(err)
                 console.log(err);
             })
             }else{
@@ -21,9 +29,10 @@ export default{
             .then((res) =>{
                 console.log(res);
                 this.$emit('emitIn'); //原本是this.Getproducts 所以更新完後需要把這個內層資料再傳到外層去 用@emit 
-                productModalTwo.hide(); //按了之後hide出來
+                this.$emit('emitClose');
+                //按了之後hide出來
             }).catch((err) => {
-                alert(err.data.message)
+                alert(err)
                 console.log(err);
             })
             }

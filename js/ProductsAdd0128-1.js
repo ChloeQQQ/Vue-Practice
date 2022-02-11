@@ -54,12 +54,13 @@ const app = createApp({
                 window.location = "./API-0121.html";
             })
         },
-        getProducts(){
+        getProducts(page = 1){
             //取產品列表-使用get //帶入變數path
-            axios.get(`${this.url}/api/${this.path}/admin/products`)
+            axios.get(`${this.url}/api/${this.path}/admin/products/?page=${page}`)
             .then((res) => { 
                 // console.log(res.data);
                 this.contents = res.data;
+                this.pagination = res.data.pagination;
             }).catch((err) => {
                 alert(err.data.message)
             })
@@ -84,6 +85,9 @@ const app = createApp({
         }).catch((err) => {
             alert(err.data.message)
         })
+        },
+        closeModal(){
+            productModalTwo.hide();
         },
         
         addItem(){
