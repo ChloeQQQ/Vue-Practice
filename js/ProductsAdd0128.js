@@ -102,7 +102,32 @@ const app = createApp({
             // console.log(item);
         },
 
-       
+        confirmItem()
+        {
+            if(this.status == false ){
+            axios.put(`${this.url}/api/${this.path}/admin/product/${this.currentItem.id}`,{data:this.currentItem})
+                //後面要把修改的那包item寫在put- api最後面
+            .then((res) =>{
+                console.log(res);
+                this.getProducts();
+                productModalTwo.hide(); //按了之後hide出來
+            }).catch((err) => {
+                alert(err.data.message)
+                console.log(err);
+            })
+            }else{
+            axios.post(`${this.url}/api/${this.path}/admin/product`,{data:this.currentItem})
+                //後面要把修改的那包item寫在put- api最後面
+            .then((res) =>{
+                console.log(res);
+                this.getProducts();
+                productModalTwo.hide(); //按了之後hide出來
+            }).catch((err) => {
+                alert(err.data.message)
+                console.log(err);
+            })
+            }
+        },
 
 
     },
@@ -114,6 +139,10 @@ const app = createApp({
       
     },  
 });
+app.component('productModal', {
+    props:[currentItem],
+    template:'#templateFor',
+})
 
 
 app.mount('#app');
