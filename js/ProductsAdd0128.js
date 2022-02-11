@@ -1,6 +1,6 @@
 import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.esm-browser.js';
 import pagination from './pagination.js';
-import addnew from './addnew.js';
+
 
 let productModalTwo = '';
 let delProduct = '';
@@ -8,7 +8,6 @@ let delProduct = '';
 const app = createApp({
     components:{
         pagination,
-        addnew,
     },
     data() {
         return {
