@@ -101,7 +101,6 @@ const app = createApp({
             }
             // console.log(item);
         },
-
         confirmItem()
         {
             if(this.status == false ){
@@ -140,7 +139,7 @@ const app = createApp({
     },  
 });
 app.component('productModal', {
-    props:[currentItem],
+    props:["currentItem"],
     template:'#templateFor',
 })
 
