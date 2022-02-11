@@ -101,6 +101,21 @@ const app = createApp({
             }
             // console.log(item);
         },
+        
+
+    },
+    mounted() {
+        productModalTwo = new bootstrap.Modal(document.querySelector('#productModal'))
+        delProduct = new bootstrap.Modal(document.querySelector('#delProductModal'))
+        // productModalTwo.show(); //打開
+
+      
+    },  
+});
+app.component('productModal', {
+    props:["currentItem"],
+    template:'#templateFor',
+    methods: {
         confirmItem()
         {
             if(this.status == false ){
@@ -119,7 +134,7 @@ const app = createApp({
                 //後面要把修改的那包item寫在put- api最後面
             .then((res) =>{
                 console.log(res);
-                this.getProducts();
+                // this.getProducts();
                 productModalTwo.hide(); //按了之後hide出來
             }).catch((err) => {
                 alert(err.data.message)
@@ -128,19 +143,7 @@ const app = createApp({
             }
         },
 
-
     },
-    mounted() {
-        productModalTwo = new bootstrap.Modal(document.querySelector('#productModal'))
-        delProduct = new bootstrap.Modal(document.querySelector('#delProductModal'))
-        // productModalTwo.show(); //打開
-
-      
-    },  
-});
-app.component('productModal', {
-    props:["currentItem"],
-    template:'#templateFor',
 })
 
 
