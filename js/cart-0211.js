@@ -112,10 +112,11 @@ const app = Vue.createApp({
         }
         axios.post(`${apiUrl}/v2/api/${apiPath}/order`,{data})
             .then((res)=>{
-                alert("您成功囉")
-                // this.getCard();
-                // this.isLoading = '';
-                //載入後清空loading 
+                // alert("您成功囉");
+                this.$refs.form.resetForm();
+                //使用refs的from 觸發套件內的resetForm()方法
+                this.getCard();
+              
             }).catch((err)=>{
                 console.log(err)
             });        
